@@ -7,7 +7,8 @@ coord=[]
 for row in sheet.iter_rows(min_row=start_row,values_only=True):
     lat=row[1]
     lon=row[2]
-    if lat is not None and lon is not None:        coord.append((float(lon),float(lat)))
+    if lat is not None and lon is not None:        
+coord.append((float(lon),float(lat)))
 print(len(coord),"coords")
 coords=' '.join([f'{lon},{lat}'for lon,lat in coord])
 kml=f"""<?xml version="1.0" encoding="UTF-8"?>
