@@ -1,5 +1,5 @@
 import openpyxl
-workbook=openpyxl.load_workbook('exemple.xls')
+workbook=openpyxl.load_workbook('exemple.xlsx')
 sheet=workbook['Raw Data']
 kml_name="exemple"
 start_row=5
