@@ -1,8 +1,8 @@
 import openpyxl
-kml_name="exemple"
+kml_name="SFX"
 workbook=openpyxl.load_workbook(f'{kml_name}.xlsx')
-sheet=workbook['Raw Data']
-start_row=7
+sheet=workbook['Data']
+start_row=2
 coord=[]
 for row in sheet.iter_rows(min_row=start_row,values_only=True):
     lat=row[1]
@@ -13,21 +13,21 @@ print(len(coord),"coords")
 coords=' '.join([f'{lon},{lat}'for lon,lat in coord])
 kml=f"""<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name>{kml_name}</name>
-    <Placemark>
-      <name>{kml_name}</name>
-      <Style>
-        <LineStyle>
-          <color>ff2dc0fb</color>
-          <width>1.33</width>
-        </LineStyle>
-      </Style>
-      <LineString>
-        <coordinates>{coords}</coordinates>
-      </LineString>
-    </Placemark>
-  </Document>
+    <Document>
+        <name>{kml_name}</name>
+        <Placemark>
+        <name>{kml_name}</name>
+        <Style>
+            <LineStyle>
+                <color>ff2dc0fb</color>
+                <width>1.33</width>
+            </LineStyle>
+        </Style>
+        <LineString>
+            <coordinates>{coords}</coordinates>
+        </LineString>
+        </Placemark>
+    </Document>
 </kml>"""
 with open(f'{kml_name}.kml','w',encoding='utf-8')as out_file:
     out_file.write(kml)
