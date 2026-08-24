@@ -1,8 +1,8 @@
 import openpyxl
-kml_name="SFX"
+kml_name="exemple"
 workbook=openpyxl.load_workbook(f'{kml_name}.xlsx')
-sheet=workbook['Data']
-start_row=2
+sheet=workbook['Raw Data']
+start_row=7
 coord=[]
 for row in sheet.iter_rows(min_row=start_row,values_only=True):
     lat=row[1]
