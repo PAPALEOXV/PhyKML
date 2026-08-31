@@ -1,22 +1,24 @@
 import openpyxl
-kml_name="exemple"
-workbook=openpyxl.load_workbook(f'{kml_name}.xlsx')
-sheet=workbook['Raw Data']
-start_row=7
+xlsx=input()
+sheet=input()
+name=input()
+start=int(input())
+xlsx=openpyxl.load_workbook(xlsx)
+sheet=xlsx[sheet]
 coord=[]
-for row in sheet.iter_rows(min_row=start_row,values_only=True):
-    lat=row[1]
-    lon=row[2]
+for row in sheet.iter_rows(min_row=start,values_only=True):
+    lat=row[2]
+    lon=row[3]
     if lat is not None and lon is not None:
         coord.append((float(lon),float(lat)))
-print(len(coord),"coords")
-coords=' '.join([f'{lon},{lat}'for lon,lat in coord])
-kml=f"""<?xml version="1.0" encoding="UTF-8"?>
+print(len(coord))
+data=' '.join([f'{lon},{lat}'for lon,lat in coord])
+data=f'''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
     <Document>
-        <name>{kml_name}</name>
+        <name>{name}</name>
         <Placemark>
-        <name>{kml_name}</name>
+        <name>{name}</name>
         <Style>
             <LineStyle>
                 <color>ff2dc0fb</color>
@@ -24,11 +26,11 @@ kml=f"""<?xml version="1.0" encoding="UTF-8"?>
             </LineStyle>
         </Style>
         <LineString>
-            <coordinates>{coords}</coordinates>
+            <coordinates>{data}</coordinates>
         </LineString>
         </Placemark>
     </Document>
-</kml>"""
-with open(f'{kml_name}.kml','w',encoding='utf-8')as out_file:
-    out_file.write(kml)
-print("OK")
+</kml>'''
+with open(f'{name}.kml','w',encoding='utf-8')as kml:
+    kml.write(data)
+print(f'{name}.kml')
