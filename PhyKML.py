@@ -7,8 +7,8 @@ xlsx=openpyxl.load_workbook(xlsx)
 sheet=xlsx[sheet]
 coord=[]
 for row in sheet.iter_rows(min_row=start,values_only=True):
-    lat=row[2]
-    lon=row[3]
+    lon=row[2]
+    lat=row[1]
     if lat is not None and lon is not None:
         coord.append((float(lon),float(lat)))
 print(len(coord))
