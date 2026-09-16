@@ -2,7 +2,7 @@
 import csv
 name=input()
 data=[]
-with open(name+'.csv',mode='r',encoding='utf-8-sig')as file:
+with open(name+'.csv',mode='r',encoding='utf-8')as file:
     file=csv.reader(file)
     next(file)
     for row in file:
