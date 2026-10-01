@@ -6,9 +6,8 @@ with open(name+'.csv',mode='r',encoding='utf-8')as file:
     file=csv.reader(file)
     next(file)
     for row in file:
-        lon=row[2]
-        lat=row[1]
-        data.append(lon+','+lat)
+        row=row[2]+','+row[1]
+        data.append(row)
 print(len(data))
 data=' '.join(data)
 data='''<?xml version="1.0" encoding="UTF-8"?>
