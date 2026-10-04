@@ -10,6 +10,4 @@ with open(name+'.csv',mode='r',encoding='utf-8')as file:
         data.append(row)
 print(len(data))
 with open(name+'.csv',mode='w',encoding='utf-8')as file:
-    file=csv.writer(file)
-    file.writerows(data)
-print(name+'.csv')
+    csv.writer(file).writerows(data)
