@@ -30,4 +30,3 @@ data='''<?xml version="1.0" encoding="UTF-8"?>
 </kml>'''
 with open(name+'.kml',mode='w',encoding='utf-8')as file:
     file.write(data)
-print(name+'.kml')
