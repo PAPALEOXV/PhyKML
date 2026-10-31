@@ -1,5 +1,3 @@
-#Please backup CSV or Phyphox
-#Please remove NaN and blank rows
 import csv
 name=input()
 data=[]
