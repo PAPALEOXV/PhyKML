@@ -1,4 +1,3 @@
-#Please remove NaN and blank rows
 import csv
 name=input()
 data=[]
